@@ -19,6 +19,10 @@ build-snapshot: tools
 lint:
 	$(ENV_VARS) go run github.com/golangci/golangci-lint/cmd/golangci-lint@latest run ./...
 
+.PHONY: release
+release:
+	$(ENV_VARS) goreleaser release --clean
+
 .PHONY: release-snapshot
 release-snapshot:
 	$(ENV_VARS) goreleaser release --snapshot --clean

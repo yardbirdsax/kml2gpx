@@ -14,23 +14,26 @@ builds:
     binary: kml2gpx
     ldflags:
       - "-X main.version={{ incpatch .Version }} -s -w"
-checksum:
-  name_template: 'checksums.txt'
-snapshot:
-  name_template: "{{ incpatch .Version }}-next"
 changelog:
   sort: asc
   filters:
     exclude:
       - '^docs:'
       - '^test:'
-brews:
-  - name: kml2gpx
-    repository:
-      branch: "homebrew-kml2gpx"
-      name: homebrew-tap
-      owner: yardbirdsax
-      pull_request:
-        enabled: true
-      token: "{{ .Env.HOMEBREW_GITHUB_TOKEN }}"
+checksum:
+  name_template: 'checksums.txt'
+release:
+  mode: replace
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+# TODO: Enable this
+# brews:
+#   - name: kml2gpx
+#     repository:
+#       branch: "homebrew-kml2gpx"
+#       name: homebrew-tap
+#       owner: yardbirdsax
+#       pull_request:
+#         enabled: true
+#       token: "{{ .Env.HOMEBREW_GITHUB_TOKEN }}"
       
